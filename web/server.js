@@ -1,11 +1,14 @@
 const path = require('node:path');
 const fs = require('fs');
 const express = require('express')
+const actuator = require('express-actuator')
+
 const app = express()
 const port = 3000
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(actuator())
 
 app.get('/', (req, res) => {
     console.log('GET request to the homepage');
