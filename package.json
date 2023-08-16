@@ -1,0 +1,14 @@
+{
+  "name": "pico-starlight-node",
+  "version": "1.0.0",
+  "description": "This repository contains an implementation of Raspberry Pi Pico MicroPython code for the [Pimoroni Wireless Plasma Kit](https://shop.pimoroni.com/products/wireless-plasma-kit?variant=40449879081043).",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
