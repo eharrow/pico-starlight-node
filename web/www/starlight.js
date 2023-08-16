@@ -12,7 +12,7 @@ $(document).ready(function() {
 		});
 		$anim.change(function(event) {
 			config_json['current_animation'] = $anim.val();
-			$.ajax('post_config.php', {
+			$.ajax('/', {
 				data: JSON.stringify(config_json),
 				contentType: 'application/json',
 				type: 'POST',
