@@ -50,7 +50,7 @@ Open Thonny, and copy the contents of the `pico/starlight.py` file into the `mai
 Edit the `WIFI_CONFIG.py` file that comes with the Plaska Kit and enter your WiFi network's `SSID`, password and country
 code.
 
-Finally, create a `SERVER_CONFIG.py` file from the `SAMPLE_SERVER_CONFIG.py` and modify the `URL` value to point to the IP/Port of the Web server you configured
+Finally, update the `SERVER_CONFIG.py` and modify the `URL` value to point to the IP/Port of the Web server you configured
 above.  Save to the Plaska Kit.
 
 Then plug this in and enjoy!
