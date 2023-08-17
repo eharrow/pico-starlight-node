@@ -21,7 +21,7 @@ follow [this guide](https://docs.docker.com/engine/install/raspberry-pi-os/).  C
 and then check http://localhost:3000 (you can change this to a port of your choosing in the compose file).
 
 Alternatively clone this repo, install NodeJS and NPM following [this guide](https://raspberrytips.com/node-js-raspberry-pi/).
-Change to the web directory and `npm start` and check http://localhost:3000.
+Change to the web directory and `npm install; npm start` and check http://localhost:3000.
 
 ### Test web server setup
 
