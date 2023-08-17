@@ -1,0 +1,10 @@
+version: "3"
+
+# More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
+services:
+  pico-starlight-node:
+    container_name: pico-starlight
+    image: gruffalo1/pico-starlight-node:latest
+    ports:
+      - "4000:3000/tcp"
+    restart: unless-stopped
