@@ -1,4 +1,6 @@
 import WIFI_CONFIG
+import SERVER_CONFIG
+
 from network_manager import NetworkManager
 import uasyncio
 import urequests
@@ -17,8 +19,8 @@ NUM_LEDS = 50
 
 # URL for the server hosting the config.json file
 # (change this with the path to your hosted config file)
-CONFIG_JSON_URL = "http://192.168.178.102:3000/config.json"
-CONFIG_JSON_UPDATE_INTERVAL = 10  # seconds between checks for the config file, change as needed
+CONFIG_JSON_URL = SERVER_CONFIG.URL
+CONFIG_JSON_UPDATE_INTERVAL = SERVER_CONFIG.UPDATE_INTERVAL
 
 # set up the Pico W's onboard LED
 pico_led = Pin('LED', Pin.OUT)
