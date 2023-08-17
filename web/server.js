@@ -30,11 +30,10 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     console.log('POST request to the homepage');
     const json_req = JSON.stringify(req.body);
-//    console.log(`${json_req}`);
 
     const retval = writeConfig(json_req);
     if (retval) {
-        res.send({success:true});
+      res.send({success:true});
     } else {
       res.send({success:false});
     }
