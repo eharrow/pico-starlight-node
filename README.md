@@ -51,7 +51,7 @@ Edit the `WIFI_CONFIG.py` file that comes with the Plaska Kit and enter your WiF
 code.
 
 Finally, update the `SERVER_CONFIG.py` and modify the `URL` value to point to the IP/Port of the Web server you configured
-above.  Save to the Plaska Kit.
+above.  Save to the Plasma Kit.
 
 Then plug this in and enjoy!
 
