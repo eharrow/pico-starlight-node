@@ -6,6 +6,8 @@ services:
     image: gruffalo1/pico-starlight-node:latest
     ports:
       - "3000:3000/tcp"
+    volumes:
+      - ../SAMPLE_CONFIG.json:/app/www/config.json:rw
     restart: unless-stopped
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:3000/health" ]
