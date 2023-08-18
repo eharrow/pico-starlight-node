@@ -4,7 +4,6 @@ const express = require('express')
 const actuator = require('express-actuator')
 
 const app = express()
-const port = 3000
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
@@ -33,17 +32,13 @@ app.post('/', (req, res) => {
 
     const retval = writeConfig(json_req);
     if (retval) {
-      res.send({success:true});
+      res.status(201).send({success:true});
     } else {
-      res.send({success:false});
+      res.status(500).send({success:false});
     }
 })
 
 app.use(express.static('www'));
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-});
 
 function writeConfig(config) {
     try {
@@ -55,3 +50,5 @@ function writeConfig(config) {
       return false;
     }
 }
+
+module.exports = app;
