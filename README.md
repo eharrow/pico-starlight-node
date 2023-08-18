@@ -1,4 +1,4 @@
-# Pimoroni Wireless Plasma Kit - Server
+# Pimoroni Wireless Plasma Kit - Server [![Build](https://github.com/eharrow/pico-starlight-node/actions/workflows/main.yml/badge.svg)](https://github.com/eharrow/pico-starlight-node/actions/workflows/main.yml)
 
 This repository is derived from https://github.com/brunon/Starlight and contains an implementation of Raspberry Pi Pico
 MicroPython code for
