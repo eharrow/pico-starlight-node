@@ -1,9 +1,32 @@
 const request = require("supertest");
-const app = require('../../server')
+const app = require('../../server');
+const fs = require('fs');
 
 describe("Controller", () => {
-    describe("get config", () => {
-        it("should return 200 and the web page", async () => {
+    beforeEach(() => {
+        const payload = {
+                         "current_animation": "spooky_rainbows",
+                         "spooky_rainbows": {
+                             "hue_start": 30,
+                             "hue_end": 140,
+                             "speed": 0.3
+                         }
+                      }
+        fs.writeFileSync("www/config.json", JSON.stringify(payload));
+    });
+
+    describe("get", () => {
+        it("should return 200 and the config json", async () => {
+            const response = await request(app)
+                .get("/config.json")
+                .send();
+
+            expect(response.status).toBe(200);
+            console.log(response.text);
+            expect(response.body).toHaveProperty('current_animation');
+        });
+
+        it("should return 200 and the landing page", async () => {
             const response = await request(app)
                 .get("/")
                 .send();
