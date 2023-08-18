@@ -30,6 +30,11 @@ app.post('/', (req, res) => {
     console.log('POST request to the homepage');
     const json_req = JSON.stringify(req.body);
 
+    if (json_req.trim().length === 0 || json_req == '{}') {
+      console.log("Error empty payload");
+      res.status(400).send({success:false});
+    }
+
     const retval = writeConfig(json_req);
     if (retval) {
       res.status(201).send({success:true});
