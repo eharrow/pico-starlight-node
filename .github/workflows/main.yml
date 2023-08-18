@@ -16,5 +16,7 @@ jobs:
           node-version: 18
           cache: 'npm'
       - run: npm install
+        working-directory: web
       - name: Test
         run: npm test
+        working-directory: web
