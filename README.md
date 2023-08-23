@@ -1,8 +1,8 @@
 # Pimoroni Wireless Plasma Kit - Server ![Build](https://github.com/eharrow/pico-starlight-node/actions/workflows/main.yml/badge.svg) ![docker](https://github.com/eharrow/pico-starlight-node/actions/workflows/docker.yml/badge.svg)
 
-This repository is derived from https://github.com/brunon/Starlight and contains an implementation of Raspberry Pi Pico
+This repository is derived from [Starlight](https://github.com/brunon/Starlight) 👏 and contains an implementation of Raspberry Pi Pico
 MicroPython code for
-the [Pimoroni Wireless Plasma Kit](https://shop.pimoroni.com/products/wireless-plasma-kit?variant=40449879081043).  This version uses a NodeJS/Express backend server rather than PHP.
+the [Pimoroni Wireless Plasma Kit](https://shop.pimoroni.com/products/wireless-plasma-kit?variant=40449879081043).  This version uses a NodeJS/Express backend server rather than PHP otherwise it is essentially a copy.
 
 Unlike the simple examples provided out of the box, this is a client/server implementation where the Pico will download
 its configuration from an external Web server, and automatically change its animation implementation based on the
