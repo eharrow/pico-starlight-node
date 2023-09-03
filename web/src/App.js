@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import Toast from 'react-bootstrap/Toast';
-import Container from 'react-bootstrap/Container';
+import Container from "react-bootstrap/Container";
+import Toast from "react-bootstrap/Toast";
 
-import './App.css';
+import "./App.css";
 
 const ExampleToast = ({ children }) => {
   const [show, toggleShow] = useState(true);
