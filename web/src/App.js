@@ -4,14 +4,14 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import "./App.css";
 
-const baseUrl = "http://localhost:3000/config.json";
+const baseUrl = "/"; // "http://localhost:3000/";
 
 const SelectAnimation = () => {
   const [config, setConfig] = useState({});
 
   useEffect(() => {
     async function fetchConfig() {
-      const resp = await axios.get(baseUrl);
+      const resp = await axios.get(`${baseUrl}config.json`);
       const respConfig = await resp.data;
       setConfig(respConfig);
       console.log(`loaded current_animation as ${respConfig["current_animation"]}`);
@@ -20,7 +20,7 @@ const SelectAnimation = () => {
   }, []);
 
   async function changeAnimation() {
-    const resp = await axios.post(baseUrl, config);
+    const resp = await axios.post(`${baseUrl}config.json`, config);
     console.log(resp);
   }
 
