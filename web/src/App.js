@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import "./App.css";
 
-// const options = [{ id: 1, label: "one" }, { id: 2, label: "too" }, { id: 3, label: "three" }];
 const baseUrl = "http://localhost:3000/config.json";
 
 const SelectAnimation = () => {
