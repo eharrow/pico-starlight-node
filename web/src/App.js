@@ -23,7 +23,9 @@ const SelectAnimation = () => {
   };
   return (
     <Form.Select id="animation" aria-label="Animation selection" onChange={handleChange}>
-      {Object.keys(config).map((k, i) => <option key={k} value={k}>{k}</option>)}
+      {Object.keys(config).map((k, i) => {
+        if (k !== "current_animation") return <option key={k} value={k}>{k}</option>;
+      })}
     </Form.Select>
   );
 };
