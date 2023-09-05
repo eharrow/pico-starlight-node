@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import "./App.css";
 
 // const options = [{ id: 1, label: "one" }, { id: 2, label: "too" }, { id: 3, label: "three" }];
-const baseUrl = "http://localhost:3000";
+const baseUrl = "http://localhost:3000/config.json";
 
 const SelectAnimation = () => {
   const [config, setConfig] = useState({});
@@ -15,16 +15,32 @@ const SelectAnimation = () => {
       const resp = await axios.get(baseUrl);
       const respConfig = await resp.data;
       setConfig(respConfig);
+      console.log(`loaded current_animation as ${respConfig["current_animation"]}`);
     }
     fetchConfig();
   }, []);
+
+  async function changeAnimation() {
+    const resp = await axios.post(baseUrl, config);
+    console.log(resp);
+  }
+
+  const isSelected = (config, val) => config["current_animation"] === val;
+
   const handleChange = event => {
-    console.log(event.target.value);
+    console.log(`changing to ${event.target.value}`);
+    config["current_animation"] = event.target.value;
+    console.log(config);
+    changeAnimation();
   };
   return (
     <Form.Select id="animation" aria-label="Animation selection" onChange={handleChange}>
       {Object.keys(config).map((k, i) => {
-        if (k !== "current_animation") return <option key={k} value={k}>{k}</option>;
+        if (k !== "current_animation") {
+          return isSelected(config, k)
+            ? <option key={k} value={k} selected>{k}</option>
+            : <option key={k} value={k}>{k}</option>;
+        }
       })}
     </Form.Select>
   );

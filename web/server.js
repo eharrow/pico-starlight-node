@@ -1,6 +1,8 @@
 const path = require("node:path");
 const fs = require("fs");
 const express = require("express");
+const cors = require("cors");
+
 const actuator = require("express-actuator");
 
 const app = express();
@@ -8,12 +10,19 @@ const app = express();
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(actuator());
+app.use(cors());
+app.options("*", cors()); // include before other routes
+app.use(express.static("build"));
 
-app.get("/", (req, res) => {
+app.get("/", function(req, res) {
+  res.redirect("index.html");
+});
+
+app.get("/config.json", (req, res) => {
   console.log("GET request to the homepage");
 
   var options = {
-    root: path.join(__dirname, "www"),
+    root: __dirname,
     dotfiles: "deny",
     headers: {
       "x-timestamp": Date.now(),
@@ -23,10 +32,10 @@ app.get("/", (req, res) => {
       "Cache-Control": "max-age=0, no-store, no-cache, must-revalidate",
     },
   };
-  res.sendFile("index.html", options);
+  res.sendFile("config.json", options);
 });
 
-app.post("/", (req, res) => {
+app.post("/config.json", (req, res) => {
   console.log("POST request to the homepage");
   const json_req = JSON.stringify(req.body);
 
@@ -43,11 +52,9 @@ app.post("/", (req, res) => {
   }
 });
 
-app.use(express.static("www"));
-
 function writeConfig(config) {
   try {
-    fs.writeFileSync("www/config.json", config);
+    fs.writeFileSync("config.json", config);
     // file written successfully
     return true;
   } catch (err) {
