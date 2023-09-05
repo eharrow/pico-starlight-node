@@ -1,26 +1,29 @@
-import React, { useState } from "react";
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import Toast from "react-bootstrap/Toast";
 import "./App.css";
 
-const options = [{ id: 1, label: "one" }, { id: 2, label: "too" }, { id: 3, label: "three" }];
-
-async function getConfig() {
-  const resp = await fetch("http://192.168.178.2:4000");
-  const config = await resp.json();
-  console.log(config);
-}
+// const options = [{ id: 1, label: "one" }, { id: 2, label: "too" }, { id: 3, label: "three" }];
+const baseUrl = "http://localhost:3000";
 
 const SelectAnimation = () => {
+  const [config, setConfig] = useState({});
+
+  useEffect(() => {
+    async function fetchConfig() {
+      const resp = await axios.get(baseUrl);
+      const respConfig = await resp.data;
+      setConfig(respConfig);
+    }
+    fetchConfig();
+  }, []);
   const handleChange = event => {
     console.log(event.target.value);
   };
   return (
     <Form.Select id="animation" aria-label="Animation selection" onChange={handleChange}>
-      <option>Choose animation</option>
-      {options.map(({ id, label }, index) => <option key={id} value={id}>{label}</option>)}
+      {Object.keys(config).map((k, i) => <option key={k} value={k}>{k}</option>)}
     </Form.Select>
   );
 };
