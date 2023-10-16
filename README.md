@@ -2,7 +2,7 @@
 
 This repository is derived from [Starlight](https://github.com/brunon/Starlight) 👏 and contains an implementation of Raspberry Pi Pico
 MicroPython code for
-the [Pimoroni Wireless Plasma Kit](https://shop.pimoroni.com/products/wireless-plasma-kit?variant=40449879081043).  This version uses a NodeJS/Express backend server rather than PHP otherwise it is essentially a copy.
+the [Pimoroni Wireless Plasma Kit](https://shop.pimoroni.com/products/wireless-plasma-kit?variant=40449879081043). This version uses a NodeJS/Express backend server rather than PHP otherwise it is essentially a copy.
 
 Unlike the simple examples provided out of the box, this is a client/server implementation where the Pico will download
 its configuration from an external Web server, and automatically change its animation implementation based on the
@@ -17,7 +17,7 @@ This part must be run on some other web server on your local network. For my tes
 NodeJS or even better Docker (preferred).
 
 These instructions assume you have a Rpi4 with Docker already installed, if not,
-follow [this guide](https://docs.docker.com/engine/install/raspberry-pi-os/).  Copy the `docker-compose.yml` to the pi, then `docker compose up`
+follow [this guide](https://docs.docker.com/engine/install/raspberry-pi-os/). Copy the `docker-compose.yml` to the pi, then `docker compose up`
 and then check http://localhost:3000 (you can change this to a port of your choosing in the compose file).
 
 Alternatively clone this repo, install NodeJS and NPM following [this guide](https://raspberrytips.com/node-js-raspberry-pi/).
@@ -51,7 +51,7 @@ Edit the `WIFI_CONFIG.py` file that comes with the Plaska Kit and enter your WiF
 code.
 
 Finally, update the `SERVER_CONFIG.py` and modify the `URL` value to point to the IP/Port of the Web server you configured
-above.  Save to the Plasma Kit.
+above. Save to the Plasma Kit.
 
 Then plug this in and enjoy!
 
@@ -73,4 +73,3 @@ For now only the animation mode can be changed, but I plan to add some code to a
 page to open up all the individual settings to be modified.
 
 Contributions welcome!
-
