@@ -1,31 +1,18 @@
 const path = require("node:path");
 const fs = require("fs");
 const express = require("express");
-const RateLimit = require("express-rate-limit");
 const actuator = require("express-actuator");
 
 const app = express();
-
-// set up rate limiter: maximum of five requests per minute
-const limiter = RateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // max 100 requests per windowMs
-});
-
-// apply rate limiter to all requests
-app.use(limiter);
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(actuator());
 
-app.use((req, res, next) => {
-  console.log(`${req.hostname} [${new Date().toISOString()}] "${req.method} ${req.url}" ${res.statusCode}`);
-  next();
-});
-
 app.get("/", (req, res) => {
-  const options = {
+  console.log("GET request to the homepage");
+
+  var options = {
     root: path.join(__dirname, "www"),
     dotfiles: "deny",
     headers: {
@@ -40,11 +27,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
+  console.log("POST request to the homepage");
   const json_req = JSON.stringify(req.body);
 
-  if (json_req.trim().length === 0 || json_req === "{}") {
+  if (json_req.trim().length === 0 || json_req == "{}") {
     console.log("Error empty payload");
-    res.status(400).send({ success: false, reason: "empty payload" });
+    res.status(400).send({ success: false });
   }
 
   const retval = writeConfig(json_req);
