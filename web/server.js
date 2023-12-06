@@ -9,9 +9,12 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(actuator());
 
-app.get("/", (req, res) => {
-  console.log("GET request to the homepage");
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} ${req.method} ${req.url} ${req.hostname}`);
+  next();
+});
 
+app.get("/", (req, res) => {
   var options = {
     root: path.join(__dirname, "www"),
     dotfiles: "deny",
@@ -27,7 +30,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  console.log("POST request to the homepage");
   const json_req = JSON.stringify(req.body);
 
   if (json_req.trim().length === 0 || json_req == "{}") {
