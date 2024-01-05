@@ -1,1 +1,5 @@
 *.swp
+/web/infra/.terraform.lock.hcl
+/web/infra/terraform.tfstate
+/web/infra/terraform.tfstate.backup
+/web/infra/.terraform/providers/registry.terraform.io/hashicorp/kubernetes/2.25.1/darwin_arm64/terraform-provider-kubernetes_v2.25.1_x5
