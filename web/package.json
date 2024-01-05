@@ -14,7 +14,8 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "tailwindcss": "^3.3.6"
   },
   "jest": {
     "testEnvironment": "node",
