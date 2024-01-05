@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pico-starlight-node
+  labels:
+    app: pico-starlight-node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pico-starlight-node
+  template:
+    metadata:
+      name: pico-starlight-node
+      labels:
+        app: pico-starlight-node
+    spec:
+      containers:
+        - name: pico-starlight-node
+          image: gruffalo1/pico-starlight-node:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /data
+              name: volv
+      volumes:
+        - name: volv
+          persistentVolumeClaim:
+            claimName: longhorn-volv-pvc
+      restartPolicy: Always
+      
