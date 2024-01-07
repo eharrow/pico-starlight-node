@@ -58,6 +58,16 @@ resource "kubernetes_deployment" "pico-starlight-node" {
             name       = "volv"
             read_only  = false
           }
+          resources {
+            limits = {
+              cpu    = "0.5"
+              memory = "512Mi"
+            }
+            requests = {
+              cpu    = "250m"
+              memory = "50Mi"
+            }
+          }
           readiness_probe {
             http_get {
               path = "/"
