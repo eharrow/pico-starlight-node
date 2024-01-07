@@ -8,8 +8,8 @@ terraform {
 }
 
 variable "kubeconfig" {
-  type = string
-  default = "~/.kube/config"
+  type        = string
+  default     = "~/.kube/config"
   description = "k8s kube config file location"
 }
 
