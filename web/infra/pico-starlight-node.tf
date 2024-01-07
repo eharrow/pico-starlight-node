@@ -58,6 +58,22 @@ resource "kubernetes_deployment" "pico-starlight-node" {
             name       = "volv"
             read_only  = false
           }
+          readiness_probe {
+            http_get {
+              path = "/"
+              port = "3000"
+            }
+            initial_delay_seconds = 3
+            period_seconds        = 3
+          }
+          liveness_probe {
+            http_get {
+              path = "/"
+              port = "3000"
+            }
+            initial_delay_seconds = 3
+            period_seconds        = 3
+          }
         }
 
         volume {
@@ -68,6 +84,8 @@ resource "kubernetes_deployment" "pico-starlight-node" {
             read_only  = false
           }
         }
+
+
       }
     }
   }
