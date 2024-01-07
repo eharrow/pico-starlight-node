@@ -68,6 +68,12 @@ resource "kubernetes_deployment" "pico-starlight-node" {
               memory = "50Mi"
             }
           }
+          startup_probe {
+            http_get {
+              path = "/"
+              port = "3000"
+            }
+          }
           readiness_probe {
             http_get {
               path = "/"
