@@ -32,7 +32,7 @@ set up:
 sudo apt-get install curl -y
 
 # this assumes you installed these files under / and your web server runs on port 3000, if not change accordingly
-curl -X POST -v -d @/path/to/git/clone/SAMPLE_CONFIG.json 'http://localhost:3000/config.json'
+curl -X POST -v --header 'Content-Type: application/json' -d @/path/to/git/clone/SAMPLE_CONFIG.json 'http://localhost:3000/config.json'
 ```
 
 This should update the `config.json` file and return:
