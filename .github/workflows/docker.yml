@@ -24,6 +24,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: "{{defaultContext}}:web"
-          platforms: linux/arm/v7
+          platform: linux/amd64,linux/arm/v7,linux/arm64
           push: true
           tags: gruffalo1/pico-starlight-node:latest
