@@ -22,7 +22,7 @@ $(document).ready(function() {
       var options = "";
       $.each(config_json, function(key, value) {
         if (key != "current_animation") {
-          options += "<option>" + key + "</option>";
+          options += `<option value="${key}">${key.replaceAll("_", " ")}</option>`;
         }
       });
       return options;
