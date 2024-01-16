@@ -4,6 +4,8 @@
   "description": "This repository contains an implementation of Raspberry Pi Pico MicroPython code for the [Pimoroni Wireless Plasma Kit](https://shop.pimoroni.com/products/wireless-plasma-kit?variant=40449879081043).",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build:tailwind",
+    "build:tailwind": "npx tailwindcss -i ./www/input.css -o ./www/output.css",
     "test": "NODE_ENV=test jest --testTimeout=5000 --detectOpenHandles --silent=false"
   },
   "author": "Ewan Harrow",
@@ -13,9 +15,11 @@
     "express-actuator": "^1.8.4"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.16",
     "jest": "^29.7.0",
     "supertest": "^6.3.3",
-    "tailwindcss": "^3.3.6"
+    "tailwindcss": "^3.3.6",
+    "text-encoding": "^0.7.0"
   },
   "jest": {
     "testEnvironment": "node",
