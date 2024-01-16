@@ -26,12 +26,18 @@
     <script src="jquery-ui.min.js"></script>
     <script src="starlight.js"></script>
 </head>
-<body class="bg-white dark:bg-slate-950">
-<div class="container mx-auto text-gray-700 dark:text-gray-300">
-    <h1 class="text-3xl font-bold underline">Starlight Settings</h1>
-    <label for="animation" class="form-label">Choose animation</label>
-    <select id="animation" class="form-select form-select-lg mb-3" aria-label="Animation selection"></select>
-	<div id="liveAlertPlaceholder"></div>
-</div>
+<body class="bg-white dark:bg-slate-950 text-gray-950 dark:text-gray-200">
+<h1 class="text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-500 to-blue-600">Starlight Settings</h1>
+<main class="mt-12 lg:mt-32">
+    <section class="container mx-auto text-gray-700 dark:text-gray-300">
+            <div class="w-full lg:flex items-center">
+                    <div class="w-full lg:w-1/2">
+                        <label for="animation" class="form-label">Choose animation</label>
+                        <select id="animation" class="form-select form-select-lg mb-3 text-gray-950" aria-label="Animation selection"></select>
+                        <div id="liveAlertPlaceholder"></div>
+                    </div>
+                </div>
+    </section>
+</main>
 </body>
 </html>
