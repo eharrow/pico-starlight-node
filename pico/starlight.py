@@ -16,6 +16,8 @@ from math import sin
 
 # Set how many LEDs you have
 NUM_LEDS = 50
+#NUM_LEDS = 100
+
 
 # URL for the server hosting the config.json file
 # (change this with the path to your hosted config file)
@@ -27,6 +29,13 @@ pico_led = Pin('LED', Pin.OUT)
 
 # set up the WS2812 / NeoPixel™ LEDs
 led_strip = plasma.WS2812(NUM_LEDS, 0, 0, plasma_stick.DAT, color_order=plasma.COLOR_ORDER_RGB)
+
+#COLOR_ORDER_RGB is the default
+#COLOR_ORDER_RBG
+#COLOR_ORDER_GRB has more green for the tree lights and the yellow for sparkles looks correct
+#COLOR_ORDER_GBR sparkles seems to be blue rather than yellow
+#COLOR_ORDER_BRG fire is pink with no yellow
+#COLOR_ORDER_BGR
 
 
 #
@@ -73,7 +82,7 @@ def download_json_file(url):
         j = r.json()
         print('Config data obtained!')
         r.close()
-        
+
         return j
     finally:
         pico_led.value(False)
@@ -86,38 +95,38 @@ def download_json_file_if_elapsed(url, last_checked, min_elapsed_time_ms):
         return j
     else:
         return None
-        
+
 #
 # Animation classes
 #
 
 class Animation():
-    
+
     keep_running = True
-    
+
     @property
     def config_key(self):
         pass
 
     def should_continue(self):
         return self.keep_running
-    
+
     def stop(self):
         self.keep_running = False
-        
+
     def start(self):
         self.keep_running = True
-    
+
     def run(self, config):
         pass
 
 
 class ErrorAnimation(Animation):
-    
+
     @property
     def config_key(self):
         return 'error'
-    
+
     def run(self, config):
         while True:
             for i in range(NUM_LEDS):
@@ -125,7 +134,7 @@ class ErrorAnimation(Animation):
                 time.sleep(0.02)
             for i in range(NUM_LEDS):
                 led_strip.set_rgb(i, 0, 0, 0)
-                
+
             yield
 
 
@@ -168,7 +177,7 @@ class CheerLights(Animation):
     """
     Source: https://github.com/pimoroni/pimoroni-pico/blob/main/micropython/examples/plasma_stick/cheerlights.py
     """
-    
+
     @property
     def config_key(self):
         return 'cheerlights'
@@ -211,11 +220,11 @@ class Fire(Animation):
     """
     Source: https://github.com/pimoroni/pimoroni-pico/blob/main/micropython/examples/plasma_stick/fire.py
     """
-    
+
     @property
     def config_key(self):
         return 'fire'
-    
+
     def run(self, config):
         """
         A basic fire effect.
@@ -258,11 +267,11 @@ class Snow(AbstractMoveAnimation):
     """
     Source: https://github.com/pimoroni/pimoroni-pico/blob/main/micropython/examples/plasma_stick/snow.py
     """
-    
+
     @property
     def config_key(self):
         return 'snow'
-    
+
     def run(self, config):
         # How much snow? [bigger number = more snowflakes]
         SNOW_INTENSITY = config.get('snow_intensity', 0.0002)
@@ -294,11 +303,11 @@ class Sparkles(AbstractMoveAnimation):
     """
     Source: https://github.com/pimoroni/pimoroni-pico/blob/main/micropython/examples/plasma_stick/sparkles.py
     """
-    
+
     @property
     def config_key(self):
         return 'sparkles'
-    
+
     def run(self, config):
         """
         A festive sparkly effect. Play around with BACKGROUND_COLOUR and SPARKLE_COLOUR for different effects!
@@ -329,16 +338,16 @@ class Sparkles(AbstractMoveAnimation):
 
             yield  # check server config file
 
-        
+
 class AlternatingBlinkies(Animation):
     """
     Source: https://github.com/pimoroni/pimoroni-pico/blob/main/micropython/examples/plasma_stick/alternating-blinkies.py
     """
-    
+
     @property
     def config_key(self):
         return 'alternating_blinkies'
-    
+
     def run(self, config):
         """
         This super simple example sets up two alternating colours, great for festive lights!
@@ -376,11 +385,11 @@ class Pulse(Animation):
     """
     Source: https://github.com/pimoroni/pimoroni-pico/blob/main/micropython/examples/plasma_stick/pulse.py
     """
-    
+
     @property
     def config_key(self):
         return 'pulse'
-    
+
     def run(self, config):
         """
         Simple pulsing effect generated using a sine wave.
@@ -389,7 +398,7 @@ class Pulse(Animation):
         # we're using HSV colours in this example - find more at https://colorpicker.me/
         # to convert a hue that's in degrees, divide it by 360
         COLOUR = config.get('colour', 0.5)
-        
+
         # config properties to adjust the implementation
         ADJUST_BRIGHTNESS = config.get('adjust_brightness', False)
         ADJUST_SATURATION = config.get('adjust_saturation', False)
@@ -509,6 +518,7 @@ def setup_wifi():
             time.sleep(0.02)
         for i in range(NUM_LEDS):
             led_strip.set_rgb(i, 0, 0, 0)
+            time.sleep(0.02)
         if status is not None:
             if status:
                 print(f'Successfully connected to SSID {WIFI_CONFIG.SSID}')
@@ -577,10 +587,19 @@ ALL_ANIMATIONS = {
         Pulse(),
         Rainbows(),
         Tree()
-        ]
-    }
+    ]
+}
 
 if __name__ == '__main__':
+    print("")
+    print("       _____              __________        ______ _____ ")
+    print("_________  /______ __________  /__(_)______ ___  /___  /_")
+    print("__  ___/  __/  __ `/_  ___/_  /__  /__  __ `/_  __ \  __/")
+    print("_(__  )/ /_ / /_/ /_  /   _  / _  / _  /_/ /_  / / / /_  ")
+    print("/____/ \__/ \__,_/ /_/    /_/  /_/  _\__, / /_/ /_/\__/  ")
+    print("                                    /____/               ")
+    print("")
+
     # start updating the LED strip
     led_strip.start()
 
