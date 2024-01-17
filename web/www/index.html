@@ -21,23 +21,28 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/assets/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <link href="output.css" rel="stylesheet">
+<!--    <link href="output.css" rel="stylesheet">-->
     <script src="jquery-3.6.3.min.js"></script>
     <script src="jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/itaypanda/simpletoast@master/SimpleToast.min.js"></script>
     <script src="starlight.js"></script>
+    <script src="https://cdn.tailwindcss.com/3.3.6"></script>
+
 </head>
-<body class="bg-white dark:bg-slate-950 text-gray-950 dark:text-gray-200">
-<h1 class="text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-yellow-500 to-blue-600">Starlight Settings</h1>
-<main class="mt-12 lg:mt-32">
-    <section class="container mx-auto text-gray-700 dark:text-gray-300">
-            <div class="w-full lg:flex items-center">
+<body class="bg-white dark:bg-slate-950">
+<h1 class="text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-green-500 to-blue-600">Starlight Settings</h1>
+
+<main class="mt-10 lg:mt-28">
+    <section class="container mx-auto">
+        <div class="w-full lg:flex">
                     <div class="w-full lg:w-1/2">
                         <label for="animation" class="form-label">Choose animation</label>
                         <select id="animation" class="form-select form-select-lg mb-3 text-gray-950" aria-label="Animation selection"></select>
-                        <div id="liveAlertPlaceholder"></div>
                     </div>
                 </div>
     </section>
 </main>
+<div id="alertBox" class="fixed bottom-0 right-0 z-[9999]"></div>
+
 </body>
 </html>
