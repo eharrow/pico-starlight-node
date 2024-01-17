@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.use(actuator());
 
 app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} ${req.method} ${req.url} ${req.hostname}`);
+  console.log(`${req.hostname} [${new Date().toISOString()}] "${req.method} ${req.url}" ${res.statusCode}`);
   next();
 });
 
