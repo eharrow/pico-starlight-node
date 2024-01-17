@@ -6,7 +6,9 @@ on:
     workflows: ["Build"]
     types:
       - completed
-
+  push:
+      branches:
+        - main
 jobs:
   docker:
     runs-on: ubuntu-latest
