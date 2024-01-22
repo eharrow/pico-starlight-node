@@ -15,7 +15,7 @@
     "express-actuator": "^1.8.4"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "jest": "^29.7.0",
     "supertest": "^6.3.4",
     "tailwindcss": "^3.3.6",
