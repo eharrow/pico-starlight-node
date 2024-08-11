@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2",
-    "express-actuator": "^1.8.4"
+    "express-actuator": "^1.8.4",
+    "express-rate-limit": "^7.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
