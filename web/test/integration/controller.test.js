@@ -63,6 +63,7 @@ describe("Controller", () => {
 
       expect(response.status).toBe(400);
       expect(response.body).toHaveProperty("success", false);
+      expect(response.body).toHaveProperty("reason", "empty payload");
     });
   });
 });
