@@ -1,5 +1,9 @@
-node_modules
-test
-infra
-.idea
-front-end
+# Ignore everything
+*
+
+# Except for these
+!package.json
+!package-lock.json*
+!www
+!index.js
+!server.js
