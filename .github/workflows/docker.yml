@@ -6,10 +6,9 @@ on:
     workflows: ["Build"]
     types:
       - completed
-  push:
-    branches:
-      - main
-
+  pull_request:
+    types:
+      - closed
 jobs:
   docker:
     runs-on: ubuntu-latest
