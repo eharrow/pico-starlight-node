@@ -1,27 +1,10 @@
 $(document).ready(function() {
-  const alertPlaceholder = document.getElementById("liveAlertPlaceholder");
-  const appendAlert = (message, type) => {
-    const wrapper = document.createElement("div");
-    wrapper.innerHTML = [
-      `<div class="alert alert-${type} alert-dismissible data-auto-dismiss" role="alert">`,
-      `   <div>${message}</div>`,
-      "   <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button>",
-      "</div>",
-    ].join("");
-
-    alertPlaceholder.append(wrapper);
-  };
-
-  window.setTimeout(function() {
-    $(".alert").alert("close");
-  }, 2000);
-
   $.getJSON("config.json", function(config_json) {
-    var $anim = $("#animation");
+    let $anim = $("#animation");
     $anim.empty().append(function() {
-      var options = "";
+      let options = "";
       $.each(config_json, function(key, value) {
-        if (key != "current_animation") {
+        if (key !== "current_animation") {
           options += `<option value="${key}">${key.replaceAll("_", " ")}</option>`;
         }
       });
@@ -35,20 +18,29 @@ $(document).ready(function() {
         type: "POST",
         success: function(response) {
           if (!!response["success"]) {
-            console.log("Config updated successfully");
-            appendAlert("Config updated successfully.  The animation should change within a minute.", "success");
+            console.log(`Config updated to ${config_json["current_animation"]}`);
+            // appendAlert("Config updated to ${config_json["current_animation"]}.  The animation should change within a minute.", "success");
+            toast(
+              "Success",
+              "Config updated successfully.  The animation should change within a minute",
+              toastStyles.success,
+            );
           } else {
             console.error("Error updating config: ", response);
-            appendAlert("Error updating config: " + response, "danger");
+            toast(
+              "Error",
+              `Problem updating with the change to ${config_json["current_animation"]}`,
+              toastStyles.error,
+            );
           }
         },
         error: function(xhr, error, ex) {
           console.error("Error posting config: " + error + ": " + ex);
-          appendAlert("Error updating config: " + error + ": " + ex, "danger");
+          toast("Error", "Unable to send the change", toastStyles.error);
         },
       });
     });
-    var current_animation = config_json["current_animation"];
+    let current_animation = config_json["current_animation"];
     if (current_animation !== undefined) {
       $anim.val(current_animation);
     }
