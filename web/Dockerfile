@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 RUN npm install --omit=dev && npm run build
 
-#-------------------------------------
+# -------------------------------------
 FROM build
 COPY --from=build . .
 CMD ["node", "index.js"]
