@@ -2,9 +2,11 @@ name: Docker Push
 
 # Only trigger, when the build workflow succeeded
 on:
-  pull_request:
-    types:
-      - closed
+  workflow_run:
+    workflows: [Build]
+    types: [requested]
+    branches: [main]
+
 jobs:
   docker:
     runs-on: ubuntu-latest
