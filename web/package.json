@@ -13,7 +13,7 @@
   "dependencies": {
     "express": "^5.1.0",
     "express-actuator": "^1.8.4",
-    "express-rate-limit": "^7.5.1"
+    "express-rate-limit": "^8.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
