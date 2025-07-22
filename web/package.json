@@ -15,7 +15,6 @@
     "express-actuator": "^1.8.4",
     "express-rate-limit": "^8.0.1",
     "form-data": ">=4.0.4"
-}
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
