@@ -13,7 +13,7 @@
   "dependencies": {
     "express": "^5.1.0",
     "express-actuator": "^1.8.4",
-    "express-rate-limit": "^8.1.0",
+    "express-rate-limit": "^8.2.1",
     "form-data": ">=4.0.4"
   },
   "devDependencies": {
