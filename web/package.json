@@ -17,7 +17,7 @@
     "form-data": ">=4.0.5"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.24",
+    "autoprefixer": "^10.4.27",
     "jest": "^30.2.0",
     "supertest": "^7.2.2",
     "tailwindcss": "^4.1.18",
